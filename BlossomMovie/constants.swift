@@ -1,0 +1,50 @@
+//
+//  constants.swift
+//  BlossomMovie
+//
+//  Created by Kunal Sharma on 17/08/26.
+//
+
+import Foundation
+import SwiftUI
+
+struct Constants {
+    static let homeString = "Home"
+    static let upcomingString = "Upcoming"
+    static let searchString = "Search"
+    static let downloadString = "Download"
+    static let playString = "Play"
+    static let trendingMovieString = "Trending Movies"
+    static let trendingTVString = "Trending TV"
+    static let topRatedMovieString = "Top Rated Movies"
+    static let topRatedTVString = "Top Rated TV"
+
+    static let homeIcon = "house"
+    static let upcomingIcon = "play.circle"
+    static let searchIcon = "magnifyingglass"
+    static let downloadIcon = "arrow.down.to.line"
+
+    static let posterURLStart = "https://image.tmdb.org/t/p/w500"
+    
+    static func addPosterPath(to titles: inout[Title]){
+        for index in titles.indices{
+            if let path = titles[index].posterPath {
+                titles[index].posterPath = Constants.posterURLStart + path
+            }
+        }
+    }
+
+}
+
+extension Text {
+    func ghostButton() -> some View {
+        self
+            .frame(width: 100, height: 50)
+            .foregroundStyle(.buttonText)
+            .bold()
+            .background {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .stroke(.buttonBorder, lineWidth: 5)
+            }
+    }
+}
